@@ -1,0 +1,19 @@
+<h1>{{ title }}</h1>
+
+<ul>
+  <li *ngFor="let item of listaTarefas"> {{item.id}} - {{item.descricao}} <button *ngIf="!item.done"
+      (click)="markAsDone(item)" type="button" class="btn btn-outline-light">Concluir</button> <button *ngIf="item.done"
+      (click)="markAsUndone(item)" type="button" class="btn btn-danger">Desfazer</button> <button (click)="remove(item)"
+      type="button" class="btn btn-outline-dark">Excluir</button></li>
+</ul>
+
+<form [formGroup]="form" id="formulario">
+  <fieldset>
+    <legend>Minhas Tarefas:</legend>
+    <label for="">TAREFA:</label>
+    <input type="text" title="A descrição deve conter de 3 a 20 caracteres" name="" required="required" formControlName="tarefa" id="task"
+      placeholder="Descreva a tarefa..." maxlength="20">
+    <p></p>
+    <button (click)="adicionarTarefaNaLista()" [disabled]="form.invalid" class="btn btn-dark">Incluir</button>
+  </fieldset>
+</form>
